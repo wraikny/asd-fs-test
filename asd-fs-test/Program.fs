@@ -9,11 +9,11 @@ module Program =
         asd.Engine.ChangeScene scene
 
         let rec loop () =
-            if Global.KeyPushed asd.Keys.Escape then ()
+            if Global.KeyPush asd.Keys.Escape then ()
             elif asd.Engine.DoEvents () then
                 asd.Engine.Update ()
                 loop ()
         loop ()
 
         asd.Engine.Terminate ()
-        0    
+        0

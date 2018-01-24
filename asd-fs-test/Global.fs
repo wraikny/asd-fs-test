@@ -1,18 +1,14 @@
 ﻿namespace test
 
 module Global =
-    let KeyPushed (key : asd.Keys) : bool =
-        if asd.Engine.Keyboard.GetKeyState key = asd.KeyState.Push then true
-        else false
+    let KeyPush (key : asd.Keys) : bool =
+        asd.Engine.Keyboard.GetKeyState key = asd.KeyState.Push
     
     let KeyHold (key : asd.Keys) : bool =
-        if asd.Engine.Keyboard.GetKeyState key = asd.KeyState.Hold then true
-        else false
+        asd.Engine.Keyboard.GetKeyState key = asd.KeyState.Hold
     
     let KeyRelease (key : asd.Keys) : bool =
-        if asd.Engine.Keyboard.GetKeyState key = asd.KeyState.Release then true
-        else false
+        asd.Engine.Keyboard.GetKeyState key = asd.KeyState.Release
     
     let KeyFree (key : asd.Keys) : bool =
-        if asd.Engine.Keyboard.GetKeyState key = asd.KeyState.Free then true
-        else false
+        asd.Engine.Keyboard.GetKeyState key = asd.KeyState.Free

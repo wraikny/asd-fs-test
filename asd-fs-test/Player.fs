@@ -1,13 +1,17 @@
 ﻿namespace test
 
+open Global
+
 type Player = 
     inherit asd.GeometryObject2D
 
     val private speed : float32
     val private size : asd.Vector2DF
 
-    member private this.UpdatePosition (dx, dy : float32) : unit =
+
+    member private this.UpdatePosition (dx, dy : float32) =
         this.Position <- new asd.Vector2DF (this.Position.X + dx, this.Position.Y + dy)
+    
     
     member private this.ClampPosition () =
         let pos = this.Position
@@ -16,24 +20,27 @@ type Player =
         let y = asd.MathHelper.Clamp (pos.Y, win.Y - this.size.Y / 2.0f, this.size.Y / 2.0f)
         this.Position <- new asd.Vector2DF (x, y)
     
-    member this.Move () : unit =
-        if Global.KeyHold asd.Keys.Up then
+    
+    member this.Move () =
+        if KeyHold asd.Keys.Up then
             this.UpdatePosition (0.0f, -this.speed)
         
-        if Global.KeyHold asd.Keys.Down then
+        if KeyHold asd.Keys.Down then
             this.UpdatePosition (0.0f, this.speed)
         
-        if Global.KeyHold asd.Keys.Right then
+        if KeyHold asd.Keys.Right then
             this.UpdatePosition (this.speed, 0.0f)
         
-        if Global.KeyHold asd.Keys.Left then
+        if KeyHold asd.Keys.Left then
             this.UpdatePosition (-this.speed, 0.0f)
         
         this.ClampPosition ()
     
+    
     override this.OnUpdate () =
         base.OnUpdate ()
         this.Move ()
+    
     
     new () as this = { inherit asd.GeometryObject2D () 
                        speed = 4.0f 
