@@ -9,7 +9,7 @@ type Player =
     val private size : asd.Vector2DF
 
 
-    member private this.UpdatePosition (dx, dy : float32) =
+    member private this.UpdatePosition dx dy =
         this.Position <- new asd.Vector2DF (this.Position.X + dx, this.Position.Y + dy)
     
     
@@ -23,16 +23,16 @@ type Player =
     
     member this.Move () =
         if KeyHold asd.Keys.Up then
-            this.UpdatePosition (0.0f, -this.speed)
+            this.UpdatePosition 0.0f -this.speed
         
         if KeyHold asd.Keys.Down then
-            this.UpdatePosition (0.0f, this.speed)
+            this.UpdatePosition 0.0f this.speed
         
         if KeyHold asd.Keys.Right then
-            this.UpdatePosition (this.speed, 0.0f)
+            this.UpdatePosition this.speed 0.0f
         
         if KeyHold asd.Keys.Left then
-            this.UpdatePosition (-this.speed, 0.0f)
+            this.UpdatePosition -this.speed 0.0f
         
         this.ClampPosition ()
     
@@ -43,10 +43,10 @@ type Player =
     
     
     new () as this = { inherit asd.GeometryObject2D () 
-                       speed = 4.0f 
+                       speed = 4.0f
                        size = new asd.Vector2DF (50.0f, 50.0f) } then
         let rect = new asd.RectangleShape ()
         rect.DrawingArea <- new asd.RectF (-this.size / 2.0f, this.size)
         this.Shape <- rect
         this.Color <- new asd.Color(255uy, 255uy, 255uy)
-        this.Position <- (asd.Engine.WindowSize.To2DF ()) / 2.0f
+        this.Position <- 0.5f * asd.Engine.WindowSize.To2DF ()
