@@ -36,7 +36,7 @@ type Player =
         this.Move ()
     
     new () as this = { inherit asd.GeometryObject2D () 
-                       speed = 5.0f 
+                       speed = 4.0f 
                        size = new asd.Vector2DF (50.0f, 50.0f) } then
         let rect = new asd.RectangleShape ()
         rect.DrawingArea <- new asd.RectF (-this.size / 2.0f, this.size)
