@@ -8,7 +8,7 @@ module Program =
         asd.Engine.Initialize ("test", 640, 480, new asd.EngineOption())
             |> ignore
         
-        let scene = new asd.Scene()
+        let scene = new Game()
 
         asd.Engine.ChangeScene(scene)
 
