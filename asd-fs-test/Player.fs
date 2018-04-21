@@ -2,51 +2,41 @@
 
 open Global
 
-type Player = 
-    inherit asd.GeometryObject2D
+type Player() as this = 
+    inherit asd.GeometryObject2D()
 
-    val private speed : float32
-    val private size : asd.Vector2DF
+    let speed = 4.0f
+    let size = new asd.Vector2DF (50.0f, 50.0f)
 
-
-    member private this.UpdatePosition dx dy =
-        this.Position <- new asd.Vector2DF (this.Position.X + dx, this.Position.Y + dy)
-    
-    
-    member private this.ClampPosition () =
-        let pos = this.Position
-        let win = asd.Engine.WindowSize.To2DF ()
-        let x = asd.MathHelper.Clamp (pos.X, win.X - this.size.X / 2.0f, this.size.X / 2.0f)
-        let y = asd.MathHelper.Clamp (pos.Y, win.Y - this.size.Y / 2.0f, this.size.Y / 2.0f)
-        this.Position <- new asd.Vector2DF (x, y)
-    
-    
-    member this.Move () =
-        if KeyHold asd.Keys.Up then
-            this.UpdatePosition 0.0f -this.speed
-        
-        if KeyHold asd.Keys.Down then
-            this.UpdatePosition 0.0f this.speed
-        
-        if KeyHold asd.Keys.Right then
-            this.UpdatePosition this.speed 0.0f
-        
-        if KeyHold asd.Keys.Left then
-            this.UpdatePosition -this.speed 0.0f
-        
-        this.ClampPosition ()
-    
-    
-    override this.OnUpdate () =
-        base.OnUpdate ()
-        this.Move ()
-    
-    
-    new () as this = { inherit asd.GeometryObject2D () 
-                       speed = 4.0f
-                       size = new asd.Vector2DF (50.0f, 50.0f) } then
-        let rect = new asd.RectangleShape ()
-        rect.DrawingArea <- new asd.RectF (-this.size / 2.0f, this.size)
-        this.Shape <- rect
+    do
+        this.Shape <-
+            let da = new asd.RectF(-size / 2.0f, size)
+            new asd.RectangleShape(DrawingArea=da)
         this.Color <- new asd.Color(255uy, 255uy, 255uy)
-        this.Position <- 0.5f * asd.Engine.WindowSize.To2DF ()
+        this.Position <- 0.5f * asd.Engine.WindowSize.To2DF()
+
+    override this.OnUpdate () =
+        this.Move ()
+        this.ClampPos ()
+
+    member private this.UpdatePos (dx, dy) =
+        this.Position <- new asd.Vector2DF(dx, dy) + this.Position
+
+    member private this.ClampPos () =
+        let p = this.Position
+        let w = asd.Engine.WindowSize.To2DF()
+        let d = size / 2.0f
+
+        let x = asd.MathHelper.Clamp(p.X, w.X - d.X, d.X)
+        let y = asd.MathHelper.Clamp(p.Y, w.Y - d.Y, d.Y)
+
+        this.Position <- new asd.Vector2DF(x, y)
+
+    member this.Move () =
+        let xy = 
+            let b2f b = if b then 1.0f else 0.0f
+            let sp f l = (b2f(KeyHold f) - b2f(KeyHold l)) * speed
+
+            (sp asd.Keys.Right asd.Keys.Left), (sp asd.Keys.Down asd.Keys.Up)
+        
+        this.UpdatePos xy

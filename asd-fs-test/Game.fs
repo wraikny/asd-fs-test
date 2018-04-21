@@ -1,22 +1,12 @@
 ﻿namespace test
 
-type Game =
-    inherit asd.Scene
+type Game() =
+    inherit asd.Scene()
 
-    val private layer : asd.Layer2D
-    val private player : Player
-
+    let player = new Player ()
+    let layer = new asd.Layer2D ()
 
     override this.OnRegistered () =
-        base.OnRegistered ()
-        this.AddLayer this.layer
-        this.layer.AddObject this.player
+        this.AddLayer layer
+        layer.AddObject player
     
-    
-    override this.OnUpdated () =
-        base.OnUpdated ()
-    
-    
-    new () = { inherit asd.Scene ()
-               player = new Player ()
-               layer = new asd.Layer2D () }
