@@ -38,14 +38,14 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.ValueTuple">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="Altseed">
-      <HintPath>..\packages\AltseedDotNet.1.1.0.2\lib\net45\Altseed.dll</HintPath>
+      <HintPath>..\packages\AltseedDotNet.1.1.5.3\lib\net45\Altseed.dll</HintPath>
     </Reference>
     <Reference Include="FSharp.Core">
-      <HintPath>packages\FSharp.Core.4.3.0\lib\net45\FSharp.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ValueTuple">
-      <HintPath>packages\System.ValueTuple.4.4.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+      <HintPath>..\packages\FSharp.Core.4.5.4\lib\net45\FSharp.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -53,9 +53,10 @@
     <None Include="packages.config" />
     <Compile Include="Global.fs" />
     <Compile Include="Player.fs" />
+    <Compile Include="PostEffectTest.fs" />
     <Compile Include="Game.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <Import Project="$(FSharpTargetsPath)" />
-  <Import Project="..\packages\AltseedDotNet.1.1.0.2\build\net45\AltseedDotNet.targets" Condition="Exists('..\packages\AltseedDotNet.1.1.0.2\build\net45\AltseedDotNet.targets')" />
+  <Import Project="..\packages\AltseedDotNet.1.1.5.3\build\net45\AltseedDotNet.targets" Condition="Exists('..\packages\AltseedDotNet.1.1.5.3\build\net45\AltseedDotNet.targets')" />
 </Project>

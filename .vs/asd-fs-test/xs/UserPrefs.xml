@@ -1,17 +1,18 @@
 ﻿<Properties StartupConfiguration="{CC3CC3B1-5F40-46BC-BF33-2CB1909ED77A}|Default">
   <MonoDevelop.Ide.ItemProperties.asd-fs-test PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="asd-fs-test/Program.fs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="asd-fs-test/PostEffectTest.fs">
     <Files>
-      <File FileName="asd-fs-test/Program.fs" Line="9" Column="34" />
-      <File FileName="asd-fs-test/Player.fs" Line="42" Column="26" />
-      <File FileName="asd-fs-test/Global.fs" Line="1" Column="1" />
-      <File FileName="asd-fs-test/Game.fs" Line="1" Column="1" />
+      <File FileName="asd-fs-test/Program.fs" Line="54" Column="12" />
+      <File FileName="asd-fs-test/Player.fs" Line="16" Column="14" />
+      <File FileName="asd-fs-test/Global.fs" Line="4" Column="22" />
+      <File FileName="asd-fs-test/Game.fs" Line="17" Column="1" />
+      <File FileName="asd-fs-test/PostEffectTest.fs" Line="53" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
 </Properties>
