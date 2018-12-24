@@ -6,7 +6,7 @@
       <File FileName="asd-fs-test/Player.fs" Line="16" Column="14" />
       <File FileName="asd-fs-test/Global.fs" Line="4" Column="22" />
       <File FileName="asd-fs-test/Game.fs" Line="17" Column="1" />
-      <File FileName="asd-fs-test/PostEffectTest.fs" Line="53" Column="9" />
+      <File FileName="asd-fs-test/PostEffectTest.fs" Line="57" Column="37" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
