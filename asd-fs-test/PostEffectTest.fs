@@ -19,7 +19,7 @@ struct PS_Input
 float4 main( const PS_Input Input ) : SV_Target
 {
     // float4 color = g_texture.Sample(g_sampler, Input.UV);
-    return float4( Input.UV, 0.0, 1.0);
+    return float4( Input.Position.xy, 0.0, 1.0);
 }
 
 "
@@ -36,8 +36,7 @@ out vec4 outOutput;
 void main()
 {
     vec4 color = texture(g_texture, inUV.xy);
-    float d = length(inUV.xy);
-    outOutput = vec4( inUV.xy, 0.0, 1.0 );
+    outOutput = vec4( inPosition.xy - (inUV.xy * 2.0 + vec2(1.0, 1.0)), 0.0, 1.0 );
 }
 "
 
